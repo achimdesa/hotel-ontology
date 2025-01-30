@@ -5,7 +5,8 @@
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:HotelOntology="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#">
     <owl:Ontology rdf:about="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology"/>
     
 
@@ -24,9 +25,16 @@
     <!-- http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#belongsToHotel -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#belongsToHotel">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#hasRoom"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#Room"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#Hotel"/>
     </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#foundIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#foundIn"/>
     
 
 
@@ -212,6 +220,7 @@
     <!-- http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#city -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#city">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#location"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#Location"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     </owl:DatatypeProperty>
@@ -231,6 +240,7 @@
     <!-- http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#country -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#country">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#location"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#Location"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     </owl:DatatypeProperty>
@@ -386,14 +396,6 @@
     
 
 
-    <!-- http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#BoutiqueHotel -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#BoutiqueHotel">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#Hotel"/>
-    </owl:Class>
-    
-
-
     <!-- http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#BudgetHotel -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#BudgetHotel">
@@ -413,7 +415,7 @@
     <!-- http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#City -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#City">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#Country"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#Location"/>
     </owl:Class>
     
 
@@ -548,19 +550,135 @@
     
 
 
-    <!-- http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#Suite -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#Suite">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#Room"/>
-    </owl:Class>
-    
-
-
     <!-- http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#WalkInBooking -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#WalkInBooking">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#Booking"/>
     </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#Adama -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#Adama">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#City"/>
+        <HotelOntology:foundIn rdf:resource="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#Ethiopia"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#AddisAbaba -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#AddisAbaba">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#City"/>
+        <HotelOntology:foundIn rdf:resource="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#Ethiopia"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#Bishoftu -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#Bishoftu">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#City"/>
+        <HotelOntology:foundIn rdf:resource="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#Ethiopia"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#Ethiopia -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#Ethiopia">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#BudgetHotel"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#Ghion -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#Ghion">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#BudgetHotel"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#HaileResort -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#HaileResort">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#ResortHotel"/>
+        <HotelOntology:isLocatedAt rdf:resource="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#Hawasa"/>
+        <HotelOntology:city>Hawasa</HotelOntology:city>
+        <HotelOntology:country>Ethiopia</HotelOntology:country>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#Hawasa -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#Hawasa">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#City"/>
+        <HotelOntology:foundIn rdf:resource="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#Ethiopia"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#Hilton -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#Hilton">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#LuxuryHotel"/>
+        <HotelOntology:hasQuality rdf:resource="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#5star"/>
+        <HotelOntology:amenityType>Wi-FI</HotelOntology:amenityType>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#Kuruftu -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#Kuruftu">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#ResortHotel"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#Sheraton -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#Sheraton">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#LuxuryHotel"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#Skylight -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#Skylight">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#LuxuryHotel"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#TolipOlympia -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#TolipOlympia">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#BudgetHotel"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#5star -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#5star">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga1/ontologies/2025/0/HotelOntology#Quality"/>
+    </owl:NamedIndividual>
 </rdf:RDF>
 
 
